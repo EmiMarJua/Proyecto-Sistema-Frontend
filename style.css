@@ -185,7 +185,7 @@ header h1 {
 
 .botonPrincipal {
     background-color: var(--blanco);
-    color: var(--primario);
+    color: var(--oscuro);
     padding: 1rem 2.5rem;
     font-size: 1.6rem;
     font-weight: bold;
@@ -217,8 +217,6 @@ header h1 {
 
 .boton:hover,
 .boton:focus,
-.botonPrincipal:hover,
-.botonPrincipal:focus,
 .botonCentrado:hover,
 .botonCentrado:focus {
     background-color: var(--primario-oscuro);
