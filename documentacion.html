@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css"> 
+    <link rel="stylesheet" href="style.css">
+    <title>Inventario de Almacenamiento</title>
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Inventario Almacenamiento</h1>
+
+    </header>
+
+    <div class="nav-bg">
+
+        <nav class="navegacion-principal contenedor"> 
+
+            <a href="index.html">Inicio</a> 
+
+            <a href="productos.html">Productos</a> 
+
+            <a href="movimientos.html">Movimientos</a> 
+
+            <a href="documentacion.html">Documentación</a> 
+
+            <a href="registro.html">Registro</a> 
+
+            <a href="compras.html">Compras</a> 
+        
+        </nav>
+
+    </div>
+
+    <main class="contenedor sombra">
+
+        <h2>Documentación</h2>
+
+        <section>
+
+            <h3>Repositorio de documentos</h3>
+
+            <form>
+
+                <div> 
+                    <label for="edicion">Edición</label> <select id="edicion">
+
+                        <option value="">Todas las ediciones</option>
+                        <option value="2026">Edición 2026</option>
+                        <option value="2025">Edición 2025</option>
+                        <option value="2024">Edición 2024</option>
+
+                    </select> 
+                    
+                </div>
+
+                <div> 
+                    <label for="categoria">Categoría</label> 
+
+                    <select id="categoria">
+
+                        <option value="">Todas las categorías</option>
+                        <option value="inventario">Inventario</option>
+                        <option value="productos">Productos</option>
+                        <option value="almacenes">Almacenes</option>
+                        <option value="reportes">Reportes</option>
+
+                    </select> 
+
+                </div>
+
+                <div> 
+
+                    <input class="boton" type="submit" value="Filtrar"> 
+
+                </div>
+            </form>
+
+        </section>
+
+        <section>
+
+            <h3>Documentos disponibles</h3>
+
+            <div class="servicios">
+
+                <article class="servicio">
+
+                    <h4>Manual del Sistema de Inventario</h4>
+
+                    <p>Autor: Departamento de Sistemas</p>
+                    <p>Año: 2026</p>
+                    <p>Categoría: Inventario</p> <a class="boton" > Ver PDF </a>
+
+                </article>
+
+                <article class="servicio">
+
+                    <h4>Catálogo de Productos</h4>
+
+                    <p>Autor: Área de Almacén</p>
+
+                    <p>Año: 2026</p>
+
+                    <p>Categoría: Productos</p> <a class="boton" > Ver PDF </a>
+
+                </article>
+
+                <article class="servicio">
+
+                    <h4>Reporte de Inventario 2025</h4>
+
+                    <p>Autor: Área de Almacén</p>
+                    <p>Año: 2025</p>
+                    <p>Categoría: Reportes</p> <a class="boton" > Ver PDF </a>
+
+                </article>
+
+            </div>
+
+        </section>
+        
+    </main>
+
+</body>
+
+</html>

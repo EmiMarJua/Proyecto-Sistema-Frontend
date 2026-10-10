@@ -1,0 +1,444 @@
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #1565c0;
+    --primario-oscuro: #0d47a1;
+    --secundario: #1263c0c2;
+    --gris: #757575;
+    --gris-claro: #f2f5f9;
+    --borde: #d9e0e8;
+    --sombra: 0px 5px 15px 0px rgba(0, 0, 0, 0.12);
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--gris-claro);
+    color: var(--oscuro);
+    line-height: 1.6;
+    margin: 0;
+}
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 3rem;
+    text-align: center;
+    color: var(--primario-oscuro);
+}
+
+h3 {
+    font-size: 2.2rem;
+    color: var(--primario);
+}
+
+h4 {
+    font-size: 1.8rem;
+    color: var(--primario-oscuro);
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+.iconos {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.iconoDebajo {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--gris);
+    margin-top: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.contenedor {
+    max-width: 120rem;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.sombra {
+    box-shadow: var(--sombra);
+    background-color: var(--blanco);
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
+.texto-centro {
+    text-align: center;
+}
+
+.margen-inferior {
+    margin-bottom: 3rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.alinear-derecha {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header {
+    background-color: var(--blanco);
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 0.3rem solid var(--primario);
+}
+
+header h1 {
+    color: var(--primario-oscuro);
+    margin: 0;
+}
+
+.nav-bg {
+    background-color: var(--primario-oscuro);
+}
+
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+}
+
+.navegacion-principal a {
+    color: var(--blanco);
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navegacion-principal a:hover,
+.navegacion-principal a:focus {
+    background-color: var(--secundario);
+    color: var(--oscuro);
+}
+
+.hero {
+    background-color: var(--primario);
+    color: var(--blanco);
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h2 {
+    color: var(--blanco);
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 70rem;
+    font-size: 1.8rem;
+}
+
+.boton {
+    background-color: var(--primario);
+    color: var(--blanco);
+    padding: 1rem 2.5rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: block;
+    width: fit-content;
+    margin: 2rem auto 0;    
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.botonPrincipal {
+    background-color: var(--blanco);
+    color: var(--primario);
+    padding: 1rem 2.5rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: block;
+    width: fit-content;
+    margin: 2rem auto 0;    
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.botonCentrado{
+    background-color: var(--primario);
+    color: var(--blanco);
+    padding: 1rem 2.5rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto 0;    
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.boton:hover,
+.boton:focus,
+.botonPrincipal:hover,
+.botonPrincipal:focus,
+.botonCentrado:hover,
+.botonCentrado:focus {
+    background-color: var(--primario-oscuro);
+    transform: translateY(-2px);
+}
+
+.texto-centrado {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+
+}
+
+main.contenedor {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+section h3 {
+    border-bottom: 0.2rem solid var(--secundario);
+    padding-bottom: 1rem;
+}
+
+/* Flexbox */
+.servicios {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.servicio {
+    background-color: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--sombra);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.servicio:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.servicio h4 {
+    margin-top: 0;
+}
+
+.servicio p {
+    margin: 0.5rem 0;
+}
+
+/* Formularios */
+form {
+    background-color: var(--gris-claro);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--borde);
+}
+
+form div {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--oscuro);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 1.2rem;
+    border: 1px solid var(--borde);
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    font-family: inherit;
+    background-color: var(--blanco);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 0.2rem solid var(--secundario);
+    border-color: var(--primario);
+}
+
+textarea {
+    min-height: 12rem;
+    resize: vertical;
+}
+
+section form.formulario {
+    display: block;              
+    background-color: var(--gris-claro);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--borde);
+}
+
+section form.formulario fieldset {
+    border: 1px solid var(--borde);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    background-color: var(--blanco);
+}
+
+section form.formulario legend {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primario-oscuro);
+    padding: 0 1rem;
+    margin-left: 1rem;
+}
+
+section form.formulario .campo {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+section form.formulario .alinear-derecha {
+    justify-content: flex-end;   
+    margin-top: 1rem;
+}
+
+section form.formulario .boton {
+    width: auto;
+    min-width: 15rem;
+    margin: 0;                    
+}
+
+/* Grid en Formularios */
+@media (min-width: 768px) {
+    form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem 2rem;
+    }
+
+    form div {
+        margin-bottom: 0;
+    }
+
+    form input[type="submit"] {
+        width: auto;
+        min-width: 15rem;
+    }
+}
+
+/* Grid */
+@media (min-width: 768px) {
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem;
+    }
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hero {
+        min-height: 40rem;
+    }
+
+    .hero h2 {
+        font-size: 4.5rem;
+    }
+
+    h1 {
+        font-size: 4.5rem;
+    }
+}
+
+/* pantallas pequenas */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    main.contenedor {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .navegacion-principal a {
+        width: 100%;
+        text-align: center;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 0.3rem solid var(--secundario);
+    outline-offset: 0.2rem;
+}

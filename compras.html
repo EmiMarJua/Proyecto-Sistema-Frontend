@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css"> 
+    <link rel="stylesheet" href="style.css">
+    <title>Inventario de Almacenamiento</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Inventario Almacenamiento</h1>
+        <p>Registro y opciones de pago</p>
+    </header>
+
+    <div class="nav-bg">
+        <nav class="navegacion-principal contenedor">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="movimientos.html">Movimientos</a>
+            <a href="documentacion.html">Documentación</a>
+            <a href="registro.html">Registro</a>
+            <a href="compras.html">Pagos</a>
+        </nav>
+    </div>
+
+    <main class="contenedor sombra">
+
+        <h2>Opciones de pago</h2>
+
+        <section>
+            <h3>Selecciona tu tipo de registro</h3>
+
+            <p>
+                Consulta los precios de ejemplo según el tipo
+                de registro que hayas seleccionado.
+            </p>
+
+            <div class="servicios">
+
+                <article class="servicio">
+
+                    <h4>Registro de administrador</h4>
+
+                    <p>Acceso para la administración del inventario.</p>
+                    <p>Precio: $500.00 MXN</p>
+
+                    <a class="boton" href="#pago-administrador">Seleccionar</a>
+
+                </article>
+
+                <article class="servicio">
+
+                    <h4>Registro de consulta</h4>
+
+                    <p>Acceso de consulta a la información del inventario.</p>
+
+                    <p>Precio: $250.00 MXN</p>
+
+                    <a class="boton" href="#pago-consulta">Seleccionar</a>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section id="pago-administrador">
+
+            <h3>Pago para administrador</h3>
+
+            <p>Importe: $500.00 MXN</p>
+
+            <p>
+                Este botón es ilustrativo y no realiza ningún cobro.
+            </p>
+
+            <a href="https://www.paypal.com/" target="_blank" rel="noopener noreferrer">
+
+                <img src="img/paypal.png.webp"alt="Ir al sitio de PayPal"width="150">
+
+            </a>
+
+            <p>
+
+                <a class="boton" href="#confirmacion">Simular confirmación</a>
+
+            </p>
+        </section>
+
+        <section id="pago-consulta">
+
+            <h3>Pago para consulta</h3>
+
+            <p>Importe: $250.00 MXN</p>
+
+            <p>
+                Este botón es ilustrativo y no realiza ningún cobro.
+            </p>
+
+            <a href="https://www.paypal.com/" target="_blank" rel="noopener noreferrer">
+
+                <img src="img/paypal.png.webp" alt="Ir al sitio de PayPal" width="150">
+                
+            </a>
+
+            <p>
+
+                <a class="boton" href="#confirmacion">
+                    Simular confirmación
+                </a>
+
+            </p>
+
+        </section>
+
+        <section id="confirmacion">
+
+            <h3>Confirmación de ejemplo</h3>
+
+            <p>
+                Tu solicitud de pago se mostraría como pendiente de confirmación.
+            </p>
+
+            <p>
+                Esta sección es únicamente demostrativa.
+                No se ha realizado ningún pago ni se ha registrado una transacción.
+            </p>
+
+            <a class="boton" href="index.html">Volver al inicio</a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

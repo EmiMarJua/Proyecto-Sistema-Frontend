@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css"> 
+    <link rel="stylesheet" href="style.css">
+    <title>Inventario de Almacenamiento</title>
+</head>
+<body>
+    
+     <header>
+        <h1 class="titulo">Inventario de Almacenamiento</h1>
+    </header>
+
+    <div class="nav-bg">
+        <nav class="navegacion-principal contenedor">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="movimientos.html">Movimientos</a>
+            <a href="documentacion.html">Documentación</a>
+            <a href="registro.html">Registro</a>
+            <a href="compras.html">Pagos</a>
+        </nav>
+    </div>
+
+    <main class="contenedor sombra">
+
+        <h2>Movimientos de Inventario</h2>
+
+        <p class="texto-centrado">
+            Consulta las entradas y salidas de productos registradas
+            en el inventario.
+        </p>
+
+        <section>
+            <h2>Filtros de búsqueda</h2>
+
+            <form class="formulario">
+
+                <fieldset>
+                    <legend>Filtrar movimientos</legend>
+
+                    <div class="contenedor-campos">
+
+                        <div class="campo">
+                            <label for="fecha">Fecha</label>
+                            <input
+                                class="input-text"
+                                type="date"
+                                id="fecha"
+                                name="fecha">
+                        </div>
+
+                        <div class="campo">
+                            <label for="tipo">Tipo de movimiento</label>
+                            <select class="input-text" id="tipo" name="tipo">
+                                <option value="">Todos los tipos</option>
+                                <option value="entrada">Entrada</option>
+                                <option value="salida">Salida</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label for="almacen">Almacén</label>
+                            <select class="input-text" id="almacen" name="almacen">
+                                <option value="">Todos los almacenes</option>
+                                <option value="principal">Almacén Principal</option>
+                                <option value="norte">Almacén Norte</option>
+                            </select>
+                        </div>
+
+                        <div class="campo">
+                            <label for="producto">Producto</label>
+                            <input
+                                class="input-text"
+                                type="text"
+                                id="producto"
+                                name="producto"
+                                placeholder="Buscar producto">
+                        </div>
+
+                    </div>
+
+                    <div class="alinear-derecha flex">
+                        <input
+                            class="boton w-sm-100"
+                            type="submit"
+                            value="Buscar">
+                    </div>
+
+                </fieldset>
+
+            </form>
+        </section>
+
+        <section>
+            <h2>Movimientos recientes</h2>
+
+            <div class="movimientos">
+
+                <article class="movimiento">
+                    <h3>Entrada de producto</h3>
+                    <p><strong>Producto:</strong> Teclado mecánico</p>
+                    <p><strong>Cantidad:</strong> +20 unidades</p>
+                    <p><strong>Almacén:</strong> Almacén Principal</p>
+                    <p><strong>Fecha:</strong> 30/09/2026</p>
+                    <p><strong>Hora:</strong> 09:30</p>
+                    <p><strong>Tipo:</strong> Entrada</p>
+                </article>
+
+                <article class="movimiento">
+                    <h3>Salida de producto</h3>
+                    <p><strong>Producto:</strong> Mouse inalámbrico</p>
+                    <p><strong>Cantidad:</strong> -5 unidades</p>
+                    <p><strong>Almacén:</strong> Almacén Principal</p>
+                    <p><strong>Fecha:</strong> 30/09/2026</p>
+                    <p><strong>Hora:</strong> 11:15</p>
+                    <p><strong>Tipo:</strong> Salida</p>
+                </article>
+
+                <article class="movimiento">
+
+                    <h3>Entrada de producto</h3>
+                    <p><strong>Producto:</strong> Monitor 24"</p>
+                    <p><strong>Cantidad:</strong> +10 unidades</p>
+                    <p><strong>Almacén:</strong> Almacén Norte</p>
+                    <p><strong>Fecha:</strong> 29/09/2026</p>
+                    <p><strong>Hora:</strong> 14:00</p>
+                    <p><strong>Tipo:</strong> Entrada</p>
+
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+            
+
+</body>
+</html>
