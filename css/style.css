@@ -211,9 +211,10 @@ header h1 {
     cursor: pointer;
     display: flex;
     justify-content: center;
-    margin: 2rem auto 0;    
+    margin: 2rem 38rem 0;    
     transition: background-color 0.3s, transform 0.2s;
 }
+
 
 .boton:hover,
 .boton:focus,

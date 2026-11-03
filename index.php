@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="normalize.css"> 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/normalize.css"> 
+    <link rel="stylesheet" href="css/style.css">
     <title>Inventario de Almacenamiento</title>
 </head>
 <body>
@@ -16,12 +16,13 @@
 
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
-            <a href="index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="movimientos.html">Movimientos</a>
-            <a href="documentacion.html">Documentación</a>
-            <a href="registro.html">Registro</a>
-            <a href="compras.html">Pagos</a>
+            <a href="index.php">Inicio</a>
+            <a href="administrador/productos.php">Productos</a>
+            <a href="administrador/movimientos.php">Movimientos</a>
+            <a href="cliente/documentacion.php">Documentación</a>
+            <a href="registro.php">Registro</a>
+            <a href="cliente/compras.php">Pagos</a>
+            <a href="login.php">Iniciar Sesion</a>
         </nav>
     </div>
 
@@ -34,7 +35,7 @@
             del almacén y mantén organizada la información de tu inventario.
         </p>
 
-        <a class="botonPrincipal" href="productos.html">Consultar productos</a>
+        <a class="botonPrincipal" href="clientes/productos.php">Consultar productos</a>
 
     </section>
 
@@ -55,7 +56,7 @@
                         precios y existencias de los productos.
                     </p>
 
-                    <a class="boton" href="productos.html">Ver productos</a>
+                    <a class="boton" href="cliente/productos.php">Ver productos</a>
 
                 </article>
 
@@ -68,7 +69,7 @@
                         registradas en el almacén.
                     </p>
 
-                    <a class="boton" href="movimientos.html">Ver movimientos</a>
+                    <a class="boton" href="administrador/movimientos.php">Ver movimientos</a>
 
                 </article>
 
@@ -81,7 +82,7 @@
                         relacionados con el inventario.
                     </p>
 
-                    <a class="boton" href="documentacion.html">Ver documentos</a>
+                    <a class="boton" href="cliente/documentacion.php">Ver documentos</a>
 
                 </article>
 
@@ -122,7 +123,7 @@
 
                 <a href="compras.html">
 
-                    <img src="img/paypal.png.webp"alt="Imagen de PayPal"width="180">
+                    <img src="img/paypal.png.webp" alt="Imagen de PayPal" width="180">
 
                 </a>
 
