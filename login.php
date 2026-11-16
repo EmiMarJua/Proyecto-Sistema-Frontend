@@ -35,7 +35,7 @@
         }
         ?>
 
-        <form action="procesos/validar_login.php" method="post">
+        <form action="procesos/validar_login.php" method="post" onsubmit="return validar()">
 
             <div>
                 <label for="usuario">Nombre de usuario</label>
@@ -51,6 +51,8 @@
                     placeholder="Escribe tu contraseña"
                     required>
             </div>
+
+            <p id="mensaje" style="color: red;"></p>
 
             <div>
                 <input class="botonLogin" type="submit" value="Iniciar sesión">
@@ -86,5 +88,38 @@
     </main>
 
 </body>
+
+    <script>
+
+    function validar() {
+
+        var usuario = document.getElementById("usuario").value;
+        var password = document.getElementById("password").value;
+
+        // Validar campos vacios
+
+        if (usuario.trim() == "" || password == "") {
+
+            document.getElementById("mensaje").innerHTML = "Error: Escribe tu usuario y contraseña";
+            return false;
+
+        }
+
+        // Validar formato del usuario
+
+        var expresionUsuario = /^[a-zA-Z0-9_]{4,20}$/;
+
+        if (!expresionUsuario.test(usuario)) {
+
+            document.getElementById("mensaje").innerHTML = "Error: El nombre de usuario no es valido";
+            return false;
+
+        }
+
+        return true;
+
+    }
+
+</script>
 
 </html>

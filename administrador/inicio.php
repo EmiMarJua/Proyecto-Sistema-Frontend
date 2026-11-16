@@ -123,4 +123,19 @@ if (!isset($_SESSION["id_usuario"]) || $_SESSION["rol"] !== "administrador") {
                             }
                     </style>
 </body>
+
+    <script>
+
+    // Obtener todos los títulos h3
+    var titulos = document.getElementsByTagName("h3");
+
+    // Recorrer los títulos
+    for (var i = 0; i < titulos.length; i++) {
+
+        titulos[i].style.color = "#1565c0";
+
+    }
+
+    </script>
+
 </html>

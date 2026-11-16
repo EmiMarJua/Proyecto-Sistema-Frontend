@@ -110,11 +110,11 @@ $mensaje = $_GET["mensaje"] ?? "";
 
                         <td>
 
-                            <form  action="../procesos/actualizar_carrito.php" method="POST">
+                            <form action="../procesos/actualizar_carrito.php" method="POST" onsubmit="return validarCantidad(this)">
 
                                 <input type="hidden"name="id_producto"value="<?php echo $producto["id_producto"]; ?>">
 
-                                <input type="number"name="cantidad"min="1"max="<?php echo (int)$producto["stock"]; ?>"value="<?php echo $producto["cantidad"]; ?>"required>
+                                <input type="number" name="cantidad" min="1" max="<?php echo (int)$producto["stock"]; ?>" value="<?php echo $producto["cantidad"]; ?>" required>
 
                                 <button  type="submit">Actualizar</button>
 

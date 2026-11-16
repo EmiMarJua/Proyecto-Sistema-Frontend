@@ -52,7 +52,7 @@ $mensaje = $_GET["mensaje"] ?? "";
 
     <p>Consulta nuestros productos disponibles y agrégalos a tu carrito.</p>
 
-    <div class="servicios">
+    <div class="servicio" data-stock="<?php echo (int)$producto["stock"]; ?>">
 
         <?php while ($producto = mysqli_fetch_assoc($consulta)): ?>
 
@@ -94,7 +94,7 @@ $mensaje = $_GET["mensaje"] ?? "";
 
                 <?php if ((int)$producto["stock"] > 0): ?>
 
-                    <form action="../procesos/agregar_carrito.php" method="POST">
+                    <form action="../procesos/agregar_carrito.php" method="POST" onsubmit="return validarCantidad(this)">
 
                         <input type="hidden"name="id_producto"value="<?php echo $producto["id_producto"]; ?>">
 
@@ -102,9 +102,8 @@ $mensaje = $_GET["mensaje"] ?? "";
                             Cantidad:
                         </label>
 
-                        <input type="number"id="cantidad_<?php echo $producto["id_producto"]; ?>"
-                        name="cantidad"min="1"max="<?php echo (int)$producto["stock"]; ?>"value="1"required
-                        >
+                        <input type="number" id="cantidad_<?php echo $producto["id_producto"]; ?>"
+                              name="cantidad" min="1" max="<?php echo (int)$producto["stock"]; ?>" value="1" required>
 
                         <button type="submit" class="boton">
                             Agregar al carrito
@@ -133,4 +132,73 @@ $mensaje = $_GET["mensaje"] ?? "";
 </main>
 
 </body>
+
+    <script>
+
+    function validarCantidad(formulario) {
+
+        var cantidad = formulario.cantidad.value;
+
+        // Validar que no este vacia
+
+        if (cantidad.trim() == "") {
+
+            alert("Escribe una cantidad");
+            return false;
+
+        }
+
+        // Validar que solamente sean numeros
+
+        var expresionCantidad = /^[0-9]+$/;
+
+        if (!expresionCantidad.test(cantidad)) {
+
+            alert("La cantidad debe contener solamente numeros");
+            return false;
+
+        }
+
+        // Validar que sea mayor a cero
+
+        if (parseInt(cantidad) < 1) {
+
+            alert("La cantidad debe ser mayor a cero");
+            return false;
+
+        }
+
+        // Validar que no supere el stock
+
+        if (parseInt(cantidad) > parseInt(formulario.cantidad.max)) {
+
+            alert("No hay suficientes existencias");
+            return false;
+
+        }
+
+        return true;
+
+        // Obtener todas las tarjetas de productos
+        var tarjetas = document.getElementsByClassName("servicio");
+
+        // Recorrer las tarjetas
+        for (var i = 0; i < tarjetas.length; i++) {
+
+            var stock = parseInt(tarjetas[i].getAttribute("data-stock"));
+
+            // Destacar productos con poco stock
+            if (stock <= 5) {
+
+                tarjetas[i].style.border = "2px solid orange";
+                tarjetas[i].style.backgroundColor = "#fff3e0";
+
+            }
+
+        }
+
+    }
+
+</script>
+
 </html>
