@@ -112,11 +112,20 @@ $mensaje = $_GET["mensaje"] ?? "";
 
                             <form action="../procesos/actualizar_carrito.php" method="POST" onsubmit="return validarCantidad(this)">
 
-                                <input type="hidden"name="id_producto"value="<?php echo $producto["id_producto"]; ?>">
+                                <input type="hidden" name="id_producto" value="<?php echo $producto["id_producto"]; ?>">
 
-                                <input type="number" name="cantidad" min="1" max="<?php echo (int)$producto["stock"]; ?>" value="<?php echo $producto["cantidad"]; ?>" required>
+                                <input
+                                    type="number"
+                                    name="cantidad"
+                                    min="1"
+                                    max="<?php echo (int)$producto["stock"]; ?>"
+                                    value="<?php echo $producto["cantidad"]; ?>"
+                                    required
+                                >
 
-                                <button  type="submit">Actualizar</button>
+                                <button type="submit">Actualizar</button>
+
+                                <p class="mensaje-error"></p>
 
                             </form>
 
@@ -130,7 +139,8 @@ $mensaje = $_GET["mensaje"] ?? "";
 
                             <form class="nada" action="../procesos/eliminar_carrito.php" method="POST">
 
-                                <input type="hidden"name="id_producto"value="<?php echo $producto["id_producto"]; ?>">
+                                <input type="hidden" name="id_producto" value="<?php echo $producto["id_producto"]; ?>">
+
                                 <button class="botonBonito" type="submit">Eliminar</button>
 
                             </form>
@@ -160,47 +170,109 @@ $mensaje = $_GET["mensaje"] ?? "";
     <a class="boton" href="inicio.php">Volver al panel</a>
 
 </main>
-                     <style>
-                            .acomodarForm{
-                                margin-left: 5rem; 
-                                text-decoration: none; 
-                                text-align:center; 
-                                font-weight: bold;
-                            }
-                    .botonGuardar{
-                        background-color: var(--primario);
-                        color: var(--blanco);
-                        padding: 2rem 20rem;
-                        font-size: 1.6rem;
-                        font-weight: bold;
-                        border: none;
-                        border-radius: 0.5rem;
-                        cursor: pointer;
-                        display: flex;
-                        justify-content: center;
-                        margin: 3rem 35rem 0;    
-                        transition: background-color 0.3s, transform 0.2s;
-                    }
-                    .nada {
-                            background-color: transparent ;
-                            padding: 0 ;
-                            margin:0 5rem 0;
-                            border: none ;
-                            box-shadow: none ;
-                            display: inline-block ;
-                        }
-                    .botonBonito{
-                        background-color: var(--primario);
-                        color: var(--blanco);
-                        padding: 1rem 2rem;
-                        font-size: 1.6rem;
-                        font-weight: bold;
-                        border-radius: 0.5rem;
-                        cursor: pointer;
-                        margin: 1rem -3rem 0;    
-                        transition: background-color 0.3s, transform 0.2s;
-                    }
 
-                    </style>
+<style>
+
+    .acomodarForm {
+        margin-left: 5rem;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .botonGuardar {
+        background-color: var(--primario);
+        color: var(--blanco);
+        padding: 2rem 20rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        margin: 3rem 35rem 0;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .nada {
+        background-color: transparent;
+        padding: 0;
+        margin: 0 5rem 0;
+        border: none;
+        box-shadow: none;
+        display: inline-block;
+    }
+
+    .botonBonito {
+        background-color: var(--primario);
+        color: var(--blanco);
+        padding: 1rem 2rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        margin: 1rem -3rem 0;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+</style>
+
+<script>
+
+// Validar la cantidad antes de actualizar el carrito
+
+function validarCantidad(formulario) {
+
+    var cantidad = formulario.elements["cantidad"].value;
+
+    var mensaje = formulario.querySelector(".mensaje-error");
+
+    mensaje.textContent = "";
+
+    // Validar que no esté vacía
+
+    if (cantidad.trim() == "") {
+
+        mensaje.textContent = "Escribe una cantidad";
+        return false;
+
+    }
+
+    // Validar que solamente sean números
+
+    var expresionCantidad = /^[0-9]+$/;
+
+    if (!expresionCantidad.test(cantidad)) {
+
+        mensaje.textContent = "La cantidad debe contener solamente números";
+        return false;
+
+    }
+
+    // Validar que sea mayor a cero
+
+    if (parseInt(cantidad) < 1) {
+
+        mensaje.textContent = "La cantidad debe ser mayor a cero";
+        return false;
+
+    }
+
+    // Validar que no supere las existencias
+
+    if (parseInt(cantidad) > parseInt(formulario.elements["cantidad"].max)) {
+
+        mensaje.textContent = "No hay suficientes existencias";
+        return false;
+
+    }
+
+    return true;
+
+}
+
+</script>
+
 </body>
 </html>

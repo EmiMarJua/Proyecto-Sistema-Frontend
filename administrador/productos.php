@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -17,10 +16,7 @@ $sql = "SELECT p.id_producto,p.codigo,p.nombre,p.descripcion,p.precio,p.stock,p.
 $resultado = mysqli_query($conexion, $sql);
 
 // Consultar categorías para el formulario
-$categorias = mysqli_query(
-    $conexion,
-    "SELECT id_categoria, nombre FROM categorias WHERE estado = 'activo'"
-);
+$categorias = mysqli_query($conexion,"SELECT id_categoria, nombre FROM categorias WHERE estado = 'activo'");
 
 ?>
 

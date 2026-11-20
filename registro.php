@@ -64,6 +64,14 @@
                         echo "<p>El correo o nombre de usuario ya esta registrado.</p>";
                         break;
 
+                    case "nombre":
+                        echo "<p>El nombre solo debe contener letras y espacios.</p>";
+                        break;
+
+                    case "usuario":
+                        echo "<p>El usuario debe tener entre 4 y 20 caracteres, solo letras, numeros y guion bajo.</p>";
+                        break;
+
                     default:
                         echo "<p>Error al registrar el usuario.</p>";
                         break;
@@ -82,7 +90,7 @@
 
             <h3>Datos del usuario</h3>
 
-            <form action="procesos/registrar_usuario.php" method="POST" onsubmit="return validar()">
+            <form action="procesos/registrar_usuario.php" method="POST" onsubmit="return validar()" novalidate>
 
                 <div>
 
@@ -108,13 +116,8 @@
                 <div>
 
                     <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Escribe una contraseña" required>
 
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Escribe una contraseña"
-                        required>
                 </div>
 
                 <div>
@@ -124,7 +127,7 @@
 
                 </div>
 
-                <p id="mensaje" style="color: red;"></p>
+                <div id="mensajes"></div>
 
                 <div>
                     <input class="botonCentrado" type="submit" value="Registrarse">
@@ -138,6 +141,23 @@
 
     <script>
 
+        function mostrarError(mensaje) {
+
+            var contenedor = document.getElementById("mensajes");
+
+            contenedor.innerHTML = "";
+
+            var alerta = document.createElement("p");
+
+            alerta.textContent = mensaje;
+
+            alerta.classList.add("error");
+
+            contenedor.appendChild(alerta);
+
+        }
+
+
         function validar() {
 
             var nombre = document.getElementById("nombre").value;
@@ -146,33 +166,33 @@
             var password = document.getElementById("password").value;
             var confirmar = document.getElementById("confirmar").value;
 
-            // Validar si hay vacios
+            // Validar si hay campos vacíos
 
             if (nombre.trim() == "" || correo.trim() == "" || usuario.trim() == "" || password == "" || confirmar == "") {
 
-                document.getElementById("mensaje").innerHTML = "Error: Todos los campos son obligatorios";
+                mostrarError("Error: Todos los campos son obligatorios");
                 return false;
 
             }
 
-            // Validar nombre completo con la expresion regular
+            // Validar nombre completo con expresión regular
 
             var expresionNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
 
-            if (!expresionNombre.test(nombre)) {
+            if (!expresionNombre.test(nombre.trim())) {
 
-                document.getElementById("mensaje").innerHTML = "Error: El nombre solo debe contener letras y espacios";
+                mostrarError("Error: El nombre solo debe contener letras y espacios");
                 return false;
 
             }
 
-            // Validar el correo electronico
+            // Validar correo electrónico
 
             var expresionCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            if (!expresionCorreo.test(correo)) {
+            if (!expresionCorreo.test(correo.trim())) {
 
-                document.getElementById("mensaje").innerHTML = "Error: El correo electronico no es valido";
+                mostrarError("Error: El correo electrónico no es válido");
                 return false;
 
             }
@@ -181,9 +201,9 @@
 
             var expresionUsuario = /^[a-zA-Z0-9_]{4,20}$/;
 
-            if (!expresionUsuario.test(usuario)) {
+            if (!expresionUsuario.test(usuario.trim())) {
 
-                document.getElementById("mensaje").innerHTML = "Error: El usuario debe tener entre 4 y 20 caracteres, solo letras, numeros y guion bajo";
+                mostrarError("Error: El usuario debe tener entre 4 y 20 caracteres, solo letras, números y guion bajo");
                 return false;
 
             }
@@ -192,7 +212,7 @@
 
             if (password.length < 8) {
 
-                document.getElementById("mensaje").innerHTML = "Error: La contraseña debe tener al menos 8 caracteres";
+                mostrarError("Error: La contraseña debe tener al menos 8 caracteres");
                 return false;
 
             }
@@ -201,7 +221,7 @@
 
             if (password != confirmar) {
 
-                document.getElementById("mensaje").innerHTML = "Error: Las contraseñas no coinciden";
+                mostrarError("Error: Las contraseñas no coinciden");
                 return false;
 
             }

@@ -1,18 +1,40 @@
-
 <?php
 
 session_start();
 
 require_once "../conexion.php";
 
+// Comprobar que el formulario se haya enviado
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+
     header("Location: ../login.php");
     exit();
+
 }
 
-$usuario = trim($_POST["usuario"]);
-$password = $_POST["password"];
+// Recibir los datos
+$usuario = trim($_POST["usuario"] ?? "");
+$password = $_POST["password"] ?? "";
 
+// Validar campos vacíos
+if ($usuario === "" || $password === "") {
+
+    header("Location: ../login.php?mensaje=vacio");
+    exit();
+
+}
+
+// Validar formato del usuario
+$expresionUsuario = "/^[a-zA-Z0-9_]{4,20}$/";
+
+if (!preg_match($expresionUsuario, $usuario)) {
+
+    header("Location: ../login.php?mensaje=usuario");
+    exit();
+
+}
+
+// Consultar usuario
 $sql = "SELECT id_usuario, nombre, usuario, password_hash, rol, estado FROM usuarios WHERE usuario = ? LIMIT 1";
 
 $consulta = mysqli_prepare($conexion, $sql);
@@ -27,15 +49,16 @@ if (mysqli_num_rows($resultado) === 1) {
 
     $datos = mysqli_fetch_assoc($resultado);
 
+    // Comprobar si la cuenta está activa
     if ($datos["estado"] !== "activo") {
 
         header("Location: ../login.php?mensaje=inactivo");
         exit();
-        
+
     }
 
-    if (password_verify($password, $datos["password_hash"])) 
-    {
+    // Comprobar contraseña
+    if (password_verify($password, $datos["password_hash"])) {
 
         session_regenerate_id(true);
 
@@ -44,14 +67,12 @@ if (mysqli_num_rows($resultado) === 1) {
         $_SESSION["usuario"] = $datos["usuario"];
         $_SESSION["rol"] = $datos["rol"];
 
-        if ($datos["rol"] === "administrador") 
-        {
+        // Redireccionar según el rol
+        if ($datos["rol"] === "administrador") {
 
             header("Location: ../administrador/inicio.php");
 
-        } 
-        else 
-        {
+        } else {
 
             header("Location: ../cliente/inicio.php");
 
@@ -63,6 +84,7 @@ if (mysqli_num_rows($resultado) === 1) {
 
 }
 
+// Si los datos son incorrectos
 header("Location: ../login.php?mensaje=error");
 exit();
 

@@ -32,6 +32,8 @@ $mensaje = $_GET["mensaje"] ?? "";
 
         <h1>Administración de Categorías</h1>
 
+        <div id="mensajes"></div>
+
         <?php if ($mensaje === "registrada"): ?>
 
             <p>La categoría se registró correctamente.</p>
@@ -56,7 +58,7 @@ $mensaje = $_GET["mensaje"] ?? "";
 
         <h2>Registrar nueva categoría</h2>
 
-        <form action="../procesos/guardar_categoria.php" method="POST">
+        <form action="../procesos/guardar_categoria.php" method="POST" onsubmit="return validarCategoria()" novalidate>
 
             <label for="nombre" class="acomodarForm">Nombre de la categoría:</label>
             <input style="margin: -0.5rem -15rem 0 ; " type="text" id="nombre" name="nombre" required>
@@ -179,4 +181,51 @@ $mensaje = $_GET["mensaje"] ?? "";
 
 
 </body>
+
+<script>
+
+function mostrarError(mensaje) {
+
+    var contenedor = document.getElementById("mensajes");
+
+    contenedor.innerHTML = "";
+
+    var parrafo = document.createElement("p");
+
+    parrafo.textContent = mensaje;
+
+    parrafo.classList.add("error");
+
+    contenedor.appendChild(parrafo);
+
+}
+
+function validarCategoria() {
+
+    var nombre = document.getElementById("nombre").value.trim();
+
+    if (nombre == "") {
+
+        mostrarError("Escribe el nombre de la categoría.");
+
+        return false;
+
+    }
+
+    var expresionNombre = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s.,()\/-]{3,100}$/;
+
+    if (!expresionNombre.test(nombre)) {
+
+        mostrarError("El nombre debe tener entre 3 y 100 caracteres y utilizar letras, números o signos permitidos.");
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+</script>
+
 </html>

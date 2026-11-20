@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -271,12 +270,16 @@ $pagado = $pago && $pago["estado"] === "completado";
 <script src="https://www.paypal.com/sdk/js?client-id=<?php echo urlencode(PAYPAL_CLIENT_ID); ?>&currency=MXN&intent=capture"></script>
 
 <script>
+// Guarda el ID de la venta para enviarlo al proceso de pago.
 const idVenta = <?php echo json_encode((int)$id_venta); ?>;
 
+// Configura los botones de PayPal.
 paypal.Buttons({
 
+    // Esta función solicita crear una orden de pago.
     createOrder: function() {
 
+        // Envía los datos al archivo PHP que procesa los pagos.
         return fetch("../procesos/procesar_pago.php", {
             method: "POST",
             headers: {
@@ -287,22 +290,30 @@ paypal.Buttons({
                 id_venta: idVenta
             })
         })
+
+        // Convierte la respuesta del servidor a formato JSON.
         .then(response => response.json())
+
+        // Comprueba si la orden se creó correctamente.
         .then(datos => {
 
             if (!datos.success) {
                 throw new Error(datos.mensaje);
             }
 
+            // Devuelve el identificador de la orden a PayPal.
             return datos.orderID;
         });
     },
 
+    // Esta función se ejecuta cuando el cliente aprueba el pago.
     onApprove: function(data) {
 
+        // Muestra un mensaje mientras se confirma el pago.
         document.getElementById("paypal-mensaje").textContent =
             "Confirmando el pago...";
 
+        // Envía la solicitud para capturar el pago aprobado.
         return fetch("../procesos/procesar_pago.php", {
             method: "POST",
             headers: {
@@ -314,28 +325,38 @@ paypal.Buttons({
                 orderID: data.orderID
             })
         })
+
+        // Convierte la respuesta del servidor a JSON.
         .then(response => response.json())
+
+        // Comprueba el resultado de la operación.
         .then(datos => {
 
             if (datos.success) {
 
+                // Informa que el pago fue confirmado.
                 document.getElementById("paypal-mensaje").textContent =
                     "¡Pago confirmado! Actualizando comprobante...";
 
+                // Recarga la página para mostrar el estado actualizado.
                 window.location.reload();
 
             } else {
 
+                // Muestra el error que devolvió el servidor.
                 document.getElementById("paypal-mensaje").textContent =
                     datos.mensaje;
             }
         });
     },
 
+    // Esta función se ejecuta si ocurre un error con PayPal.
     onError: function(error) {
 
+        // Muestra el error en la consola del navegador.
         console.error(error);
 
+        // Informa al cliente que ocurrió un problema.
         document.getElementById("paypal-mensaje").textContent =
             "Ocurrió un error al procesar el pago. Intenta nuevamente.";
     }
